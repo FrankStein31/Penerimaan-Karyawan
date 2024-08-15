@@ -19,14 +19,33 @@
 
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
+
+    <style>
+        .bg-image {
+            background-image: url('https://static.vecteezy.com/system/resources/previews/000/602/514/original/buildings-silhouette-cityscape-background-modern-architecture-urban-city-landscape-vector.jpg');
+            background-size: cover;
+            background-position: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Atur nilai opacity sesuai keinginan (0.0 - 1.0) */
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
 </head>
-<body class="bg-gradient-primary min-vh-100 d-flex justify-content-center align-items-center">
 
-@yield('main-content')
-
+<body class="min-vh-100 d-flex justify-content-center align-items-center">
+    <div class="bg-image"></div>
+    @yield('main-content')
 <!-- Scripts -->
-<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 </body>
 </html>
