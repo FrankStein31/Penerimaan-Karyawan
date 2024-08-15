@@ -73,7 +73,7 @@ CREATE TABLE `lokers` (
   `department_id` bigint(20) unsigned NOT NULL,
   `position_id` bigint(20) unsigned NOT NULL,
   `max_applicants` int(11) NOT NULL,
-  `salary` decimal(10,2) NOT NULL,
+  `salary` decimal(10,2) DEFAULT 0.00,
   `description` text NOT NULL,
   `photo` varchar(255) DEFAULT NULL,
   `statement_letter` varchar(255) DEFAULT NULL,
