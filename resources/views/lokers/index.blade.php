@@ -27,7 +27,7 @@
                         <th>Posisi</th>
                         <th>Batas Pengajuan</th>
                         <th>Jumlah Pelamar</th>
-                        <th>Gaji</th>
+                        <!-- <th>Gaji</th> -->
                         <th>Deskripsi</th>
                         <th>Aksi</th>
                     </tr>
@@ -44,7 +44,7 @@
                                     {{ $loker->applicants_count }} / {{ $loker->max_applicants }}
                                 </span>
                             </td>
-                            <td>Rp. {{ $loker->salary }}</td>
+                            <!-- <td>Rp. {{ $loker->salary }}</td> -->
                             <td>{{ Str::limit($loker->description, 50) }}</td>
                             <td>
                                 <a href="{{ route('lokers.edit', $loker->id) }}" class="btn btn-warning btn-sm">

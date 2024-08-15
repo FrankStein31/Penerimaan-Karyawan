@@ -23,7 +23,7 @@
                         <li><strong>Pekerjaan:</strong> {{ $jobApplication->loker->name }}</li>
                         <li><strong>Departemen:</strong> {{ $jobApplication->loker->department->name }}</li>
                         <li><strong>Posisi:</strong> {{ $jobApplication->loker->position->name }}</li>
-                        <li><strong>Gaji:</strong> Rp {{ number_format($jobApplication->loker->salary, 0, ',', '.') }}</li>
+                        <!-- <li><strong>Gaji:</strong> Rp {{ number_format($jobApplication->loker->salary, 0, ',', '.') }}</li> -->
                         <li>
                             <strong>Foto:</strong>
                             @if($jobApplication->loker->photo)

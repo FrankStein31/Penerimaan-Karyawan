@@ -32,10 +32,10 @@
         <input type="number" class="form-control" id="max_applicants" name="max_applicants" required>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="salary">Gaji</label>
         <input type="number" step="0.01" class="form-control" id="salary" name="salary" required>
-    </div>
+    </div> -->
 
     <div class="form-group">
         <label for="description">Deskripsi</label>

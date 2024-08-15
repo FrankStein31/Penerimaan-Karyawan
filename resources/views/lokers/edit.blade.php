@@ -35,10 +35,10 @@
         <input type="number" class="form-control" id="max_applicants" name="max_applicants" value="{{ $loker->max_applicants }}" required>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="salary">Gaji</label>
         <input type="number" step="0.01" class="form-control" id="salary" name="salary" value="{{ $loker->salary }}" required>
-    </div>
+    </div> -->
 
     <div class="form-group">
         <label for="description">Deskripsi</label>
@@ -57,7 +57,7 @@
         <label for="statement_letter">Template Surat Pengajuan (Optional)</label>
         <input type="file" class="form-control-file" id="statement_letter" name="statement_letter">
         @if ($loker->statement_letter)
-            <a href="{{ Storage::url($loker->statement_letter) }}" target="_blank">Lihat Surat Pengajuan</a>
+            <a>✅Template Surat Pengajuan Sudah Diupload</a>
         @endif
     </div>
 

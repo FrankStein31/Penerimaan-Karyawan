@@ -28,7 +28,10 @@
 <body class="font-['Poppins'] flex flex-col min-h-full relative">
     <header class="bg-white bg-opacity-90 shadow-sm w-full z-10">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-gray-800">Pabrik Gula Mrican</div>
+            <div class="flex items-center">
+                <img src="{{ asset('img/1.png') }}" alt="Logo" class="h-10 mr-3">
+                <div class="text-2xl font-bold text-gray-800">Pabrik Gula Mrican</div>
+            </div>
             <div>
                 <a href="{{ route('login') }}" class="text-gray-600 hover:text-gray-800 mr-6 transition duration-300">Login</a>
                 <a href="{{ route('register') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-full transition duration-300">Register</a>

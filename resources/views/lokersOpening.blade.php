@@ -24,7 +24,7 @@
                         <h5 class="card-title text-primary">{{ $loker->name }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{ $loker->position->name }}</h6>
                         <p class="card-text"><i class="fas fa-building me-2"></i> {{ $loker->department->name }}</p>
-                        <p class="card-text"><i class="fas fa-money-bill-wave me-2"></i> Rp {{ number_format($loker->salary, 0, ',', '.') }}</p>
+                        <!-- <p class="card-text"><i class="fas fa-money-bill-wave me-2"></i> Rp {{ number_format($loker->salary, 0, ',', '.') }}</p> -->
                         <p class="card-text">
                             <i class="fas fa-users me-2"></i>
                             <span class="text-muted">Kuota Pengajuan :</span> {{ $loker->current_applicants_count }} / {{ $loker->max_applicants }}
