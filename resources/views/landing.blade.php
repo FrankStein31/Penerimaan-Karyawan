@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-image: url('https://static.vecteezy.com/system/resources/previews/000/602/514/original/buildings-silhouette-cityscape-background-modern-architecture-urban-city-landscape-vector.jpg');
+            background-image: url('https://imgs.search.brave.com/7GSpZ9qh_M0F8_GYvGfKatfhNEoTGUvZvSuewrG-S_Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zaW5l/cmdpZ3VsYS5jb20v/X25leHQvaW1hZ2U_/dXJsPS9pbWFnZXMv/dW5pdGtlcmphL3Bn/bWVyaXRqYW4uanBn/Jnc9MTkyMCZxPTc1');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -20,7 +20,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(255, 255, 255, 0.85);
+            background-color: rgba(255, 255, 255, 0.75);
             z-index: -1;
         }
     </style>
