@@ -41,7 +41,7 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-            @if(Auth::user()->is_admin)
+            @if(Auth::user()->is_admin == 1)
             <!-- Nav Item - Dashboard -->
             <li class="nav-item {{ Nav::isRoute('home') }}">
                 <a class="nav-link" href="{{ route('home') }}">
@@ -72,12 +72,29 @@
                 </a>
             </li>
             <!-- Nav Item - apply -->
+            <!-- <li class="nav-item {{ Nav::isRoute('job_applications.index') }}">
+                <a class="nav-link" href="{{ route('job_applications.index') }}">
+                    <i class="fas fa-user-cog"></i>
+                    <span>{{ __('Pengajuan Lowongan') }}</span>
+                </a>
+            </li> -->
+
+            @elseif(Auth::user()->is_admin == 2)
+            <!-- Limited Admin Menu -->
+            <li class="nav-item {{ Nav::isRoute('home') }}">
+                <a class="nav-link" href="{{ route('home') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>{{ __('Dashboard') }}</span></a>
+            </li>
+
+            <!-- Nav Item - apply -->
             <li class="nav-item {{ Nav::isRoute('job_applications.index') }}">
                 <a class="nav-link" href="{{ route('job_applications.index') }}">
                     <i class="fas fa-user-cog"></i>
                     <span>{{ __('Pengajuan Lowongan') }}</span>
                 </a>
             </li>
+
             @else
             <!-- Nav Item - Lokers Opening -->
             <li class="nav-item {{ Nav::isRoute('lokers.opening') }}">

@@ -34,7 +34,15 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <h5 class="font-weight-bold">{{ Auth::user()->name }} {{ Auth::user()->last_name }}</h5>
-                            <p>{{ Auth::user()->is_admin ? 'Administrator' : 'User' }}</p>
+                            <p>
+                                @if (Auth::user()->is_admin == 1)
+                                    Administrator
+                                @elseif (Auth::user()->is_admin == 2)
+                                    HRD
+                                @else
+                                    Calon Karyawan
+                                @endif
+                            </p>
                         </div>
                     </div>
                 </div>

@@ -6,14 +6,45 @@ use App\Models\JobApplication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\JobApplicationStatusUpdate;
+use App\Models\Department;
 use Illuminate\Support\Facades\Storage;
 
 class JobApplicationController extends Controller
 {
-    public function index()
+    // public function index()
+    // {
+    //     $jobApplications = JobApplication::with('user', 'loker')->get();
+    //     return view('job_applications.index', compact('jobApplications'));
+    // }
+
+    public function index(Request $request)
     {
-        $jobApplications = JobApplication::with('user', 'loker')->get();
-        return view('job_applications.index', compact('jobApplications'));
+        $departments = Department::all();
+        
+        $jobApplicationsQuery = JobApplication::with('user', 'loker', 'loker.department');
+        
+        // Filter berdasarkan departemen
+        if ($request->has('department_id') && $request->department_id != 'all') {
+            $jobApplicationsQuery->whereHas('loker', function ($query) use ($request) {
+                $query->where('department_id', $request->department_id);
+            });
+        }
+        
+        // Filter berdasarkan status
+        if ($request->has('status') && $request->status != 'all') {
+            $jobApplicationsQuery->where('status', $request->status);
+        }
+        
+        $jobApplications = $jobApplicationsQuery->get();
+        
+        // Define status options
+        $statusOptions = [
+            'pending' => 'Pending',
+            'accepted' => 'Accepted',
+            'rejected' => 'Rejected'
+        ];
+        
+        return view('job_applications.index', compact('jobApplications', 'departments', 'statusOptions'));
     }
 
     public function show($id)

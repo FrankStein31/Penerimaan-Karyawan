@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Loker;
+use App\Models\User;
 use App\Models\Department;
 use App\Models\Position;
 use App\Models\JobApplication;
@@ -139,6 +140,13 @@ class LokerController extends Controller
 
     public function submitApplication(Request $request, $id)
     {
+        // Cek apakah user yang login adalah regular user (is_admin == 0)
+        // dan apakah field education masih kosong
+        if (auth()->user()->is_admin == 0 && empty(auth()->user()->education)) {
+            return redirect()->route('lokers.show', $id)
+                ->with('error', 'Harap melengkapi data diri sebelum mengajukan lamaran.');
+        }
+
         $request->validate([
             'application_file' => 'required|mimes:pdf|max:2048', // Max 2MB
         ]);

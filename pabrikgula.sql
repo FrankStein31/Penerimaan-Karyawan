@@ -55,13 +55,9 @@ CREATE TABLE `job_applications` (
   KEY `job_applications_lokers_id_foreign` (`lokers_id`),
   CONSTRAINT `job_applications_lokers_id_foreign` FOREIGN KEY (`lokers_id`) REFERENCES `lokers` (`id`) ON DELETE CASCADE,
   CONSTRAINT `job_applications_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `job_applications` */
-
-insert  into `job_applications`(`id`,`user_id`,`lokers_id`,`applied_at`,`application_file`,`status`,`created_at`,`updated_at`) values 
-(1,2,1,'2024-08-11 03:26:20','applications/1723346780_KHS Semester 3.pdf','accepted','2024-08-11 03:26:20','2024-08-11 06:59:41'),
-(2,3,1,'2024-08-11 04:42:22','applications/1723351342_KHS Semester 3.pdf','pending','2024-08-11 04:42:22','2024-08-11 04:42:22');
 
 /*Table structure for table `lokers` */
 
@@ -84,13 +80,14 @@ CREATE TABLE `lokers` (
   KEY `lokers_position_id_foreign` (`position_id`),
   CONSTRAINT `lokers_department_id_foreign` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`) ON DELETE CASCADE,
   CONSTRAINT `lokers_position_id_foreign` FOREIGN KEY (`position_id`) REFERENCES `positions` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `lokers` */
 
 insert  into `lokers`(`id`,`name`,`department_id`,`position_id`,`max_applicants`,`salary`,`description`,`photo`,`statement_letter`,`created_at`,`updated_at`) values 
 (1,'Dibutuhkan Kepala Bidang IT Support Segera',1,1,5,2000000.00,'- Mampu mengoperasikan website admin\r\n- Menguasai minimal 2 bahasa pemograman\r\n- Dapat bekerja di luar jam kerja\r\nNB : Dari 5 pengajuan akan diterima 1','photos/ODxFt6tSrvcmO5taeE697E0T52pd66uvBwBBS6YE.jpg','statements/OzS1o4hNsl0VWt7ci4wm1KqlkqgqJFmFaVbaEOLJ.pdf','2024-08-10 11:49:13','2024-08-11 03:55:34'),
-(4,'Dibutuhkan Bendahara Keuangan',3,4,10,1500000.00,'- Minimal Lulusan S1 Akuntansi/Keuangan\r\n- Mampu Mengoperasikan Excel\r\n- Akan diterima 3 dari 10 pelamar','photos/HwutL7qDI7hBDib16VDA34SuiaM57CZklQ2dSYPX.jpg','statements/y9PoNWZMiFke3oi7jGxMeo58YDBgobhL0fdf6iYo.pdf','2024-08-11 04:17:48','2024-08-11 04:17:48');
+(4,'Dibutuhkan Bendahara Keuangan',3,4,10,1500000.00,'- Minimal Lulusan S1 Akuntansi/Keuangan\r\n- Mampu Mengoperasikan Excel\r\n- Akan diterima 3 dari 10 pelamar','photos/HwutL7qDI7hBDib16VDA34SuiaM57CZklQ2dSYPX.jpg','statements/y9PoNWZMiFke3oi7jGxMeo58YDBgobhL0fdf6iYo.pdf','2024-08-11 04:17:48','2024-08-11 04:17:48'),
+(5,'coba',2,2,99999,0.00,'coba','photos/8EAGAP7l48S15Ftuh64WNk7IGibamCLjA2ZQpUoP.png','statements/8iKLCtIV4EXcgF2pv4Pmf1ERUVh3lQ76BWf0ZeH7.pdf','2024-10-09 00:37:25','2024-10-09 00:37:25');
 
 /*Table structure for table `positions` */
 
@@ -137,15 +134,14 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `users` */
 
 insert  into `users`(`id`,`name`,`last_name`,`email`,`email_verified_at`,`password`,`phone`,`birth_date`,`address`,`education`,`is_admin`,`remember_token`,`created_at`,`updated_at`) values 
-(1,'admin','admin','admin@gmail.com',NULL,'$2y$12$Da4oxuRPhrPyVTV.2.RRtOGpXlvI0T83/aWICnLB1hRcXJWjyMd2.',NULL,NULL,NULL,NULL,1,NULL,'2024-08-09 15:40:38','2024-08-09 15:40:38'),
-(2,'Frankie','Steinlie','frankie.steinlie@gmail.com',NULL,'$2y$12$yb6T727OjBMShLzuJQaMQurix4kgCTY3zov/4tdKU9vMC0iTwXPhy','08883866931','2002-12-31','Perum. Bumi Pertama Blok C14, Pare','Politeknik Negeri Malang Psdku Kediri - Manajemen Informatika - 2024',0,NULL,'2024-08-10 03:30:09','2024-08-10 13:17:10'),
-(3,'F','S','fs@gmail.com',NULL,'$2y$12$/z8/kcvzyO20Ud6EImo/C.5tf7lNkMRSeH41twzBCWd4ETPqZQv2a','08883866931',NULL,NULL,NULL,0,NULL,'2024-08-10 12:12:02','2024-08-11 04:42:59'),
-(4,'coba','coba','coba@gmail.com',NULL,'$2y$12$qxB1TpfUaPCfS.8OreBe.uzsn5L6PvEH3nuoNabeGgDVI2MPe77SO',NULL,NULL,NULL,NULL,0,NULL,'2024-08-11 07:20:31','2024-08-11 07:20:31');
+(1,'Admin','Pabrik Gula','admin@gmail.com',NULL,'$2y$12$Da4oxuRPhrPyVTV.2.RRtOGpXlvI0T83/aWICnLB1hRcXJWjyMd2.',NULL,NULL,NULL,NULL,1,NULL,'2024-08-09 15:40:38','2024-10-09 02:11:01'),
+(2,'HRD','Pabrik Gula','hrd@gmail.com',NULL,'$2y$12$qxB1TpfUaPCfS.8OreBe.uzsn5L6PvEH3nuoNabeGgDVI2MPe77SO',NULL,NULL,NULL,NULL,2,NULL,'2024-08-11 07:20:31','2024-08-11 07:20:31'),
+(3,'Cavin','Ardiansyach','cavin@gmail.com',NULL,'$2y$12$wdmAV2iIKkZAXrN//QGL..nW5OhK.7GaUb4Jkftg3HYwEnTi.MEkm',NULL,NULL,NULL,NULL,0,NULL,'2024-10-09 01:55:29','2024-10-09 01:55:29');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
