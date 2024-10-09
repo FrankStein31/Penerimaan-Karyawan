@@ -25,7 +25,7 @@
                         <th>Nama</th>
                         <th>Departemen</th>
                         <th>Posisi</th>
-                        <th>Batas Pengajuan</th>
+                        <!-- <th>Batas Pengajuan</th> -->
                         <th>Jumlah Pelamar</th>
                         <!-- <th>Gaji</th> -->
                         <th>Deskripsi</th>
@@ -38,10 +38,10 @@
                             <td>{{ $loker->name }}</td>
                             <td>{{ $loker->department->name }}</td>
                             <td>{{ $loker->position->name }}</td>
-                            <td>{{ $loker->max_applicants }}</td>
+                            <!-- <td>{{ $loker->max_applicants }}</td> -->
                             <td>
                                 <span class="badge bg-info text-white">
-                                    {{ $loker->applicants_count }} / {{ $loker->max_applicants }}
+                                    {{ $loker->applicants_count }}
                                 </span>
                             </td>
                             <!-- <td>Rp. {{ $loker->salary }}</td> -->

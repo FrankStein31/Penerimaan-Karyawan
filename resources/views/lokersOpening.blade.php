@@ -27,7 +27,7 @@
                         <!-- <p class="card-text"><i class="fas fa-money-bill-wave me-2"></i> Rp {{ number_format($loker->salary, 0, ',', '.') }}</p> -->
                         <p class="card-text">
                             <i class="fas fa-users me-2"></i>
-                            <span class="text-muted">Kuota Pengajuan :</span> {{ $loker->current_applicants_count }} / {{ $loker->max_applicants }}
+                            <span class="text-muted">Jumlah Pelamar Saat Ini :</span> {{ $loker->current_applicants_count }}
                         </p>
                         <a href="{{ route('lokers.show', $loker->id) }}" class="btn btn-outline-primary mt-auto">
                             <i class="fas fa-info-circle me-2"></i> Lihat Detail

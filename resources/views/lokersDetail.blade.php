@@ -26,7 +26,7 @@
                     <ul class="list-unstyled">
                         <li class="mb-3"><i class="fas fa-building me-2"></i> <strong>Departemen:</strong> {{ $loker->department->name }}</li>
                         <li class="mb-3"><i class="fas fa-user-tie me-2"></i> <strong>Posisi:</strong> {{ $loker->position->name }}</li>
-                        <li class="mb-3"><i class="fas fa-users me-2"></i> <strong>Batas Pengajuan:</strong> {{ $loker->max_applicants }}</li>
+                        <!-- <li class="mb-3"><i class="fas fa-users me-2"></i> <strong>Batas Pengajuan:</strong> {{ $loker->max_applicants }}</li> -->
                         <!-- <li class="mb-3"><i class="fas fa-money-bill-wave me-2"></i> <strong>Gaji:</strong> Rp {{ number_format($loker->salary, 0, ',', '.') }}</li> -->
                     </ul>
                 </div>

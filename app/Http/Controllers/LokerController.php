@@ -32,7 +32,6 @@ class LokerController extends Controller
                 $loker->current_applicants_count = $loker->current_applicants_count;
                 return $loker;
             });
-
         return view('lokersOpening', compact('lokers'));
     }
 
@@ -55,25 +54,24 @@ class LokerController extends Controller
             'name' => 'required|string|max:255',
             'department_id' => 'required|exists:departments,id',
             'position_id' => 'required|exists:positions,id',
-            'max_applicants' => 'required|integer|min:1',
+            'max_applicants' => 'nullable|integer|min:1',
             'salary' => 'nullable|numeric',
             'description' => 'required|string',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'statement_letter' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
         ]);
-
         $data = $request->except(['photo', 'statement_letter']);
-
+        // Tambahkan nilai default untuk max_applicants jika tidak ada
+        if (!isset($data['max_applicants'])) {
+            $data['max_applicants'] = 99999;
+        }
         if ($request->hasFile('photo')) {
             $data['photo'] = $request->file('photo')->store('photos', 'public');
         }
-
         if ($request->hasFile('statement_letter')) {
             $data['statement_letter'] = $request->file('statement_letter')->store('statements', 'public');
         }
-
         Loker::create($data);
-
         return redirect()->route('lokers.index')->with('success', 'Loker created successfully.');
     }
 
@@ -144,9 +142,7 @@ class LokerController extends Controller
         $request->validate([
             'application_file' => 'required|mimes:pdf|max:2048', // Max 2MB
         ]);
-
         $loker = Loker::findOrFail($id);
-
         $alreadyApplied = JobApplication::where('user_id', auth()->id())
             ->where('lokers_id', $loker->id)
             ->exists();
@@ -154,26 +150,21 @@ class LokerController extends Controller
         if ($alreadyApplied) {
             return redirect()->route('lokers.show', $id)->with('error', 'Anda sudah melamar pada lowongan ini.');
         }
-
         $applicationCount = JobApplication::where('lokers_id', $loker->id)->count();
-
         if ($applicationCount >= $loker->max_applicants) {
             return redirect()->route('lokers.show', $id)->with('error', 'Maaf, Lowongan ini telah mencapai batas kuota.');
         }
-
         if ($request->hasFile('application_file')) {
             $file = $request->file('application_file');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('applications', $fileName, 'public');
         }
-
         JobApplication::create([
             'user_id' => auth()->id(),
             'lokers_id' => $loker->id,
             'applied_at' => now(),
             'application_file' => $filePath ?? null,
         ]);
-
         return redirect()->route('lokers.show', $id)->with('success', 'Lamaran anda berhasil dikirim!');
     }
 

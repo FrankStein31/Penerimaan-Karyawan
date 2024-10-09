@@ -32,9 +32,7 @@ class PositionController extends Controller
             'name' => 'required|string|max:255',
             'department_id' => 'required|exists:departments,id',
         ]);
-
         Position::create($request->all());
-
         return redirect()->route('positions.index')->with('success', 'Position created successfully.');
     }
 

@@ -21,7 +21,6 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
-        // Validate the input
         $request->validate([
             'name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
@@ -34,7 +33,6 @@ class ProfileController extends Controller
             'new_password' => 'nullable|min:8|max:12',
             'password_confirmation' => 'nullable|min:8|max:12|same:new_password'
         ]);
-
         $user = User::findOrFail(Auth::user()->id);
         $user->name = $request->input('name');
         $user->last_name = $request->input('last_name');
@@ -43,8 +41,6 @@ class ProfileController extends Controller
         $user->birth_date = $request->input('birth_date');
         $user->address = $request->input('address');
         $user->education = $request->input('education');
-
-        // Update password if provided
         if ($request->filled('new_password')) {
             if ($request->filled('current_password') && Hash::check($request->input('current_password'), $user->password)) {
                 $user->password = Hash::make($request->input('new_password'));
@@ -52,9 +48,7 @@ class ProfileController extends Controller
                 return redirect()->back()->withErrors(['current_password' => 'Current password is incorrect or not provided.'])->withInput();
             }
         }
-
         $user->save();
-
         return redirect()->route('profile')->withSuccess('Profile updated successfully.');
     }
 }

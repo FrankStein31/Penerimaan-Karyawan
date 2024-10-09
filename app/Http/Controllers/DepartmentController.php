@@ -23,9 +23,7 @@ class DepartmentController extends Controller
         $request->validate([
             'name' => 'required|string|max:255|unique:departments,name',
         ]);
-
         Department::create($request->all());
-
         return redirect()->route('departments.index')->with('success', 'Department created successfully.');
     }
 

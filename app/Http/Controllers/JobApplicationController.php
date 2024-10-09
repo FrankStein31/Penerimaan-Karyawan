@@ -35,9 +35,7 @@ class JobApplicationController extends Controller
         $jobApplication = JobApplication::findOrFail($id);
         $jobApplication->status = $request->input('status');
         $jobApplication->save();
-
         $jobApplication->user->notify(new JobApplicationStatusUpdate($jobApplication->status, $jobApplication->loker->name));
-
         return redirect()->route('job_applications.show', $id)->with('success', 'Pengajuan Berhasil Diproses dan Email Notifikasi Telah Dikirim.');
     }
 

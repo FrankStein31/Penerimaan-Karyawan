@@ -30,10 +30,10 @@
         </select>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="max_applicants">Batas Pengajuan</label>
         <input type="number" class="form-control" id="max_applicants" name="max_applicants" value="{{ $loker->max_applicants }}" required>
-    </div>
+    </div> -->
 
     <!-- <div class="form-group">
         <label for="salary">Gaji</label>
