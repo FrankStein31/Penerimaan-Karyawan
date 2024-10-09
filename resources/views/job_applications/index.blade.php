@@ -34,9 +34,21 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group">
-                        @if(request('department_id') != 'all' || request('status') != 'all')
+                        <label for="score">Filter Skor</label>
+                        <select class="form-control" id="score" name="score" onchange="this.form.submit()">
+                            @foreach ($scoreOptions as $value => $label)
+                            <option value="{{ $value }}" {{ request('score') == $value ? 'selected' : '' }}>
+                                {{ $label }}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @if(request('department_id') != 'all' || request('status') != 'all' || request('score') != 'all')
                             <a href="{{ route('job_applications.index') }}" class="btn btn-secondary">Reset Filter</a>
                         @endif
                     </div>
@@ -47,7 +59,7 @@
     
     @if($jobApplications->isEmpty())
         <div class="alert alert-info text-center">
-            <i class="fas fa-info-circle me-2"></i>Tidak ada pengajuan lowongan saat ini.
+            <i class="fas fa-info-circle me-2"></i>Tidak ada data saat ini.
         </div>
     @else
         <div class="card shadow-sm">
@@ -60,6 +72,7 @@
                                 <th>Calon Karyawan</th>
                                 <th>Lowongan Pekerjaan</th>
                                 <th>Departemen</th>
+                                <th>Tes Pengetahuan Departemen (Skor)</th>
                                 <th>Tanggal Pengajuan</th>
                                 <th>Tanggal Diproses</th>
                                 <th>Status</th>
@@ -73,8 +86,8 @@
                                 <td>{{ $application->user->name }}</td>
                                 <td>{{ $application->loker->name }}</td>
                                 <td>{{ $application->loker->department->name }}</td>
+                                <td>Benar <b>{{ $application->score }}</b> dari 10 ({{ $application->score * 10 }})</td>
                                 <td>{{ $application->applied_at}}</td>
-                                <!-- <td>{{ $application->updated_at}}</td> -->
                                 <td>
                                     @if($application->updated_at == $application->applied_at)
                                         -

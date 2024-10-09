@@ -27,6 +27,40 @@
                         NB: Surat pernyataan dapat di-download pada halaman detail lowongan. Pastikan data yang Anda input sesuai!
                     </div>
                 </div>
+
+                <h3 class="mb-3">Pertanyaan Departemen</h3>
+                @foreach($loker->department->questions as $question)
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $loop->iteration }}. {{ $question->question }}</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="answers[{{ $question->id }}]" id="answer_{{ $question->id }}_a" value="A" required>
+                                <label class="form-check-label" for="answer_{{ $question->id }}_a">
+                                    {{ $question->option_a }}
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="answers[{{ $question->id }}]" id="answer_{{ $question->id }}_b" value="B">
+                                <label class="form-check-label" for="answer_{{ $question->id }}_b">
+                                    {{ $question->option_b }}
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="answers[{{ $question->id }}]" id="answer_{{ $question->id }}_c" value="C">
+                                <label class="form-check-label" for="answer_{{ $question->id }}_c">
+                                    {{ $question->option_c }}
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="answers[{{ $question->id }}]" id="answer_{{ $question->id }}_d" value="D">
+                                <label class="form-check-label" for="answer_{{ $question->id }}_d">
+                                    {{ $question->option_d }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
                 <div class="d-flex justify-content-between mt-4">
                     <a href="{{ route('lokers.show', $loker->id) }}" class="btn btn-outline-secondary">
                         <i class="fas fa-arrow-left me-2"></i> Kembali
