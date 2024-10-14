@@ -91,7 +91,7 @@ class LokerController extends Controller
             'name' => 'required|string|max:255',
             'department_id' => 'required|exists:departments,id',
             'position_id' => 'required|exists:positions,id',
-            'max_applicants' => 'required|integer|min:1',
+            'max_applicants' => 'nullable|integer|min:1',
             'salary' => 'nullable|numeric',
             'description' => 'required|string',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -99,6 +99,10 @@ class LokerController extends Controller
         ]);
 
         $data = $request->except(['photo', 'statement_letter']);
+
+        if (!isset($data['max_applicants'])) {
+            $data['max_applicants'] = 99999;
+        }
 
         if ($request->hasFile('photo')) {
             if ($loker->photo) {
@@ -118,6 +122,40 @@ class LokerController extends Controller
 
         return redirect()->route('lokers.index')->with('success', 'Loker updated successfully.');
     }
+
+    // public function update(Request $request, Loker $loker)
+    // {
+    //     $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'department_id' => 'required|exists:departments,id',
+    //         'position_id' => 'required|exists:positions,id',
+    //         'max_applicants' => 'required|integer|min:1',
+    //         'salary' => 'nullable|numeric',
+    //         'description' => 'required|string',
+    //         'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    //         'statement_letter' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+    //     ]);
+
+    //     $data = $request->except(['photo', 'statement_letter']);
+
+    //     if ($request->hasFile('photo')) {
+    //         if ($loker->photo) {
+    //             Storage::delete('public/' . $loker->photo);
+    //         }
+    //         $data['photo'] = $request->file('photo')->store('photos', 'public');
+    //     }
+
+    //     if ($request->hasFile('statement_letter')) {
+    //         if ($loker->statement_letter) {
+    //             Storage::delete('public/' . $loker->statement_letter);
+    //         }
+    //         $data['statement_letter'] = $request->file('statement_letter')->store('statements', 'public');
+    //     }
+
+    //     $loker->update($data);
+
+    //     return redirect()->route('lokers.index')->with('success', 'Loker updated successfully.');
+    // }
 
     public function destroy(Loker $loker)
     {
