@@ -7,7 +7,7 @@ APLIKASI PENERIMAAN KARYAWAN LARAVEL PHP >=8.1
 - php artisan serve
 
 Aplikasi :
-![image](https://github.com/user-attachments/assets/036268a8-3d7b-4771-9fe6-b86c81f23cab)
+[image](https://github.com/user-attachments/assets/036268a8-3d7b-4771-9fe6-b86c81f23cab)
 ![image](https://github.com/user-attachments/assets/cc19da79-109f-4f42-939c-bbb9fb959a76)
 ![image](https://github.com/user-attachments/assets/c5db41de-1b03-412b-b2b3-562c10f2beb8)
 
